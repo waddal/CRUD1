@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# CRS Consulting - Test Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Directions:
 
-## Available Scripts
+Using Material UI version 1 and React create-react-app, 
+create a Contacts App where you can read, add, edit or delete contacts.
+It can be a simple list with buttons to add, edit, delete each contact.
+The contact fields are name, phone, email.
+ 
+1. You must use Redux.
+2. You must use React Hooks.
+3. You must use Material UI version 1. 
+(Style it properly the best you can using Material UI standards and components, like Table, List/ListItem, Material UI Icons).
 
-In the project directory, you can run:
+[Styling examples]
+https://www.creative-tim.com/product/material-dashboard-material-ui-v4 
+https://demos.creative-tim.com/material-dashboard-material-ui-v4/?_ga=2.194807661.1746088875.1655141341-287422235.1655141341#/admin/dashboard 
+ 
+## API 
 
-### `npm start`
+Use the following API to make this React CRUD app :
+ 
+GET https://tester.crs-consulting.com/api/entries - gets all contacts
+ 
+GET https://tester.crs-consulting.com/api/entry?id=<contact id> - gets one contact
+ 
+POST https://tester.crs-consulting.com/api/entry - creates contact with { name, email, phone } body data
+  
+PUT https://tester.crs-consulting.com/api/entry - { name, email, phone, id } data
+ 
+DELETE https://tester.crs-consulting.com/api/entry?id=>contact id>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
