@@ -2,8 +2,6 @@ import React from "react";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 
-import ContactCard from "./ContactCard";
-
 const Contact = ({ contact, handleDisplayCard }) => {
 
   return (
