@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Routes, Route } from "react-router-dom";
-// import { connect } from "react-redux";
 
 import ContactsList from "./components/ContactsList";
 import Navigation from "./components/Navigation";
@@ -11,17 +10,12 @@ function App() {
     <StyledApp>
       <Navigation />
       <Routes>
-        <Route path="/contacts" element={<ContactsList />} />
+        <Route path="/" element={<ContactsList />} />
       </Routes>
     </StyledApp>
   );
 }
 
-// const mapStateToProps = (state) => {
-//   return {};
-// };
-
-// export default connect(mapStateToProps, {})(App);
 export default App;
 
 const StyledApp = styled.div`
