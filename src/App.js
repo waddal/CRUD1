@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Routes, Route } from "react-router-dom";
 
 import ContactsList from "./components/ContactsList";
+import ContactCard from "./components/ContactCard";
 import Navigation from "./components/Navigation";
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
     <StyledApp>
       <Navigation />
       <Routes>
-        <Route path="/" element={<ContactsList />} />
+        <Route path="/contacts" element={<ContactsList />} />
+        <Route path="/contacts/:id" element={<ContactCard />} />
       </Routes>
     </StyledApp>
   );
