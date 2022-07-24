@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
@@ -12,8 +12,10 @@ import EditIcon from "@mui/icons-material/Edit";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 
 import { deleteContact } from "../actions/index";
+import DeleteContactDialog from "./DeleteContactDialog";
 
 const ContactCard = ({ contacts, deleteContact }) => {
+  const [open, setOpen] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
   const contact = contacts.find((contact) => contact.id === Number(id));
@@ -22,14 +24,20 @@ const ContactCard = ({ contacts, deleteContact }) => {
     navigate("/contacts");
   };
 
+  const handleModal = () => {
+    setOpen(!open);
+  }
+
   const handleDeleteContact = () => {
-    // create modal to request user confirmation
-    deleteContact(contact.id);
+    console.log('deleting contact');
+    handleModal();
+    // deleteContact(contact.id);
     handleNavigateContacts();
   };
 
   return (
     <Box>
+      {open && <DeleteContactDialog handleModal={handleModal} open={open} handleDeleteContact={handleDeleteContact} />}
       <Card
         sx={{
           position: "relative",
@@ -74,7 +82,7 @@ const ContactCard = ({ contacts, deleteContact }) => {
           <Button size="small">
             <EditIcon />
           </Button>
-          <Button size="small" onClick={handleDeleteContact}>
+          <Button size="small" onClick={handleModal}>
             <PersonRemoveIcon />
           </Button>
         </CardActions>
