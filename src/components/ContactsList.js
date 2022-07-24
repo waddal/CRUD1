@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -7,6 +8,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import IconButton from "@mui/material/IconButton";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 import Contact from "./ContactListItem";
@@ -29,18 +31,20 @@ const Title = styled("h2")({
   textAlign: "center",
 });
 
-const ButtonContainer = styled("div")({
-  padding: "0% 5px",
-});
-
 const ContactsList = ({ contacts }) => {
+  let navigate = useNavigate();
+
+  const handleAddContact = () => {
+    navigate("/contacts/add");
+  };
+
   return (
     <Container>
       <Header>
         <Title>Contacts</Title>
-        <ButtonContainer>
+        <IconButton onClick={handleAddContact}>
           <PersonAddIcon />
-        </ButtonContainer>
+        </IconButton>
       </Header>
       <TableContainer>
         <Table

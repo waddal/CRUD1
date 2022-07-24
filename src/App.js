@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import ContactsList from "./components/ContactsList";
 import ContactCard from "./components/ContactCard";
+import AddContactForm from "./components/AddContactForm";
 import Navigation from "./components/Navigation";
 
 function App() {
@@ -13,6 +14,8 @@ function App() {
       <Routes>
         <Route path="/contacts" element={<ContactsList />} />
         <Route path="/contacts/:id" element={<ContactCard />} />
+        <Route path="/contacts/add" element={<AddContactForm />} />
+        <Route path="*" element={<Navigate to="/contacts" replace />} />
       </Routes>
     </StyledApp>
   );

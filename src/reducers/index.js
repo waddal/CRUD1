@@ -4,7 +4,7 @@ import {
   FETCH_FAIL,
   ADD_CONTACT,
   DELETE_CONTACT,
-  UPDATE_CONTACT,
+  // UPDATE_CONTACT,
 } from "../actions/index";
 
 const initialState = {
@@ -39,9 +39,10 @@ const reducer = (state = initialState, action) => {
     case ADD_CONTACT:
       return {
         ...state,
-        isFetching: false,
-        isSuccess: false,
-        contacts: [...state.contacts, action.payload],
+      };
+    case DELETE_CONTACT:
+      return {
+        ...state,
       };
     default:
       return state;

@@ -23,7 +23,6 @@ export const getContacts = () => {
 };
 
 export const getContactById = (id) => {
-  console.log('fetching from: ', process.env.REACT_APP_API, 'id: ', id);
   return (dispatch) => {
     dispatch(fetchStart());
     axios
@@ -38,6 +37,37 @@ export const getContactById = (id) => {
   };
 };
 
+export const addContact = (contact) => {
+  console.log('actions suite: ', contact);
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axios
+      .post(`${process.env.REACT_APP_API}entry`, contact)
+      .then((res) => {
+        dispatch(fetchSuccess(res.data));
+      })
+      .catch((err) => {
+        dispatch(fetchFail({message: `Unable to create contact`, error: err}));
+      });
+  };
+}
+
+export const deleteContact = (id) => {
+  console.log('contact being removed: ', id);
+  return (dispatch) => {
+    // dispatch(fetchStart());
+    axios
+      .delete(`${process.env.REACT_APP_API}entry?id=${id}`, id)
+      .then((res) => {
+        console.log('deleted: ', res.data)
+        // dispatch(fetchSuccess(res.data));
+      })
+      .catch((err) => {
+        dispatch(fetchFail({message: `Unable to create contact`, error: err}));
+      });
+  };
+}
+
 export const fetchStart = () => {
   return { type: FETCH_START };
 }
@@ -48,14 +78,6 @@ export const fetchSuccess = (data) => {
 
 export const fetchFail = (message) => {
   return { type: FETCH_FAIL, payload: message };
-}
-
-export const addContact = (contact) => {
-  return {type: ADD_CONTACT, payload: contact};
-}
-
-export const deleteContact = (contactId) => {
-  return {type: DELETE_CONTACT, payload: contactId};
 }
 
 export const updateContact = (contactId) => {

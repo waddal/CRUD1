@@ -9,17 +9,24 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import EditIcon from "@mui/icons-material/Edit";
-import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
+import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 
-const ContactCard = ({ contacts }) => {
+import { deleteContact } from "../actions/index";
+
+const ContactCard = ({ contacts, deleteContact }) => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const contact = contacts.find((contact) => contact.id === Number(id));
 
   const handleNavigateContacts = () => {
-    navigate('/contacts');
-  }
+    navigate("/contacts");
+  };
 
-  const contact = contacts.find(contact => contact.id ===Number(id));
+  const handleDeleteContact = () => {
+    // create modal to request user confirmation
+    deleteContact(contact.id);
+    handleNavigateContacts();
+  };
 
   return (
     <Box>
@@ -67,7 +74,7 @@ const ContactCard = ({ contacts }) => {
           <Button size="small">
             <EditIcon />
           </Button>
-          <Button size="small">
+          <Button size="small" onClick={handleDeleteContact}>
             <PersonRemoveIcon />
           </Button>
         </CardActions>
@@ -82,4 +89,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(ContactCard);
+export default connect(mapStateToProps, { deleteContact })(ContactCard);
