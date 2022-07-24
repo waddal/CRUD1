@@ -29,9 +29,8 @@ const ContactCard = ({ contacts, deleteContact }) => {
   }
 
   const handleDeleteContact = () => {
-    console.log('deleting contact');
     handleModal();
-    // deleteContact(contact.id);
+    deleteContact(contact.id);
     handleNavigateContacts();
   };
 

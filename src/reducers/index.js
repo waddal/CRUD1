@@ -2,16 +2,14 @@ import {
   FETCH_START,
   FETCH_SUCCESS,
   FETCH_FAIL,
-  ADD_CONTACT,
-  DELETE_CONTACT,
-  // UPDATE_CONTACT,
+  CONFIRMATION_MESSAGE
 } from "../actions/index";
 
 const initialState = {
   contacts: [],
   isFetching: false,
   isSuccess: false,
-  error: "",
+  message: "",
 };
 
 const reducer = (state = initialState, action) => {
@@ -20,7 +18,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: true,
-        error: "",
+        message: "",
       };
     case FETCH_SUCCESS:
       return {
@@ -34,15 +32,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         isFetching: false,
         isSuccess: false,
-        error: action.payload,
+        message: action.payload,
       };
-    case ADD_CONTACT:
+    case CONFIRMATION_MESSAGE:
       return {
         ...state,
-      };
-    case DELETE_CONTACT:
-      return {
-        ...state,
+        message: action.payload,
       };
     default:
       return state;
