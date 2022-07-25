@@ -13,8 +13,8 @@ export default yup.object().shape({
   .email('Please enter a valid email address')
   .required('Email required'),
   phone: yup
-  .number()
-  .typeError('Phone number required')
+  .string()
+  .matches(/^[0-9]+$/, 'Numbers only')
   .min(10, `Phone number should have 10 digits`)
   .required('Phone number required'),
 });

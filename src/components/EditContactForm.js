@@ -110,6 +110,8 @@ const EditContactForm = ({ contacts, updateContact }) => {
                 onChange={handleChange}
               />
             </Typography>
+            <div id="error">{formErrors.name}</div>
+
             <Typography sx={{ mb: 0.5 }} color="text.secondary">
               Email:
             </Typography>
@@ -122,6 +124,8 @@ const EditContactForm = ({ contacts, updateContact }) => {
                 onChange={handleChange}
               />
             </Typography>
+            <div id="error">{formErrors.email}</div>
+
             <Typography sx={{ mb: 0.5 }} color="text.secondary">
               Phone:
             </Typography>
@@ -134,11 +138,8 @@ const EditContactForm = ({ contacts, updateContact }) => {
                 onChange={handleChange}
               />
             </Typography>
-            <Typography variant="body2">
-              <div id="error">{formErrors.name}</div>
-              <div id="error">{formErrors.email}</div>
-              <div id="error">{formErrors.phone}</div>
-            </Typography>
+            <div id="error">{formErrors.phone}</div>
+
             <input
               type={"submit"}
               value={"Submit Changes"}

@@ -102,6 +102,8 @@ const AddContactForm = ({ addContact }) => {
                 onChange={handleChange}
               />
             </Typography>
+            <div id="error">{formErrors.name}</div>
+
             <Typography sx={{ mb: 0.5 }} color="text.secondary">
               Email:
             </Typography>
@@ -114,6 +116,8 @@ const AddContactForm = ({ addContact }) => {
                 onChange={handleChange}
               />
             </Typography>
+            <div id="error">{formErrors.email}</div>
+
             <Typography sx={{ mb: 0.5 }} color="text.secondary">
               Phone:
             </Typography>
@@ -126,9 +130,8 @@ const AddContactForm = ({ addContact }) => {
                 onChange={handleChange}
               />
             </Typography>
-            <div id="error">{formErrors.name}</div>
-            <div id="error">{formErrors.email}</div>
             <div id="error">{formErrors.phone}</div>
+
             <input
               type={"submit"}
               value={"Add Contact"}
