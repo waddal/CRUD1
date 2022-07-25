@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { styled } from "@mui/material/styles";
@@ -11,7 +11,8 @@ import TableRow from "@mui/material/TableRow";
 import IconButton from "@mui/material/IconButton";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
-import Contact from "./ContactListItem";
+import { getContacts } from '../actions/index';
+import ContactListItem from "./ContactListItem";
 
 const Container = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -31,12 +32,16 @@ const Title = styled("h2")({
   textAlign: "center",
 });
 
-const ContactsList = ({ contacts }) => {
+const ContactsList = ({ contacts, getContacts }) => {
   let navigate = useNavigate();
 
   const handleAddContact = () => {
     navigate("/contacts/add");
   };
+
+  useEffect(() => {
+    getContacts();
+  }, [])
 
   return (
     <Container>
@@ -64,7 +69,7 @@ const ContactsList = ({ contacts }) => {
           </TableHead>
           <TableBody>
             {contacts.map((contact, index) => (
-              <Contact key={index} contact={contact} />
+              <ContactListItem key={index} contact={contact} />
             ))}
           </TableBody>
         </Table>
@@ -79,4 +84,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(ContactsList);
+export default connect(mapStateToProps, {getContacts})(ContactsList);

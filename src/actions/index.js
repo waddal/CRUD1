@@ -70,6 +70,22 @@ export const deleteContact = (id) => {
   };
 };
 
+export const updateContact = (contact) => {
+  return (dispatch) => {
+    axios
+      .put(`${process.env.REACT_APP_API}entry`, contact)
+      .then((res) => {
+        console.log('updated: ', res.data)
+        dispatch(
+          confirmationMessage({ message: `Updated contact with id: ${contact.id}.` })
+        );
+      })
+      .catch((err) => {
+        dispatch(fetchFail({ message: `Unable to make changes to contact with id: ${contact.id}.` }));
+      });
+  };
+};
+
 export const fetchStart = () => {
   return { type: FETCH_START };
 };
@@ -80,10 +96,6 @@ export const fetchSuccess = (data) => {
 
 export const fetchFail = (message) => {
   return { type: FETCH_FAIL, payload: message };
-};
-
-export const updateContact = (contactId) => {
-  return { type: UPDATE_CONTACT, payload: contactId };
 };
 
 export const confirmationMessage = (message) => {

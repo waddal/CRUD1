@@ -6,6 +6,7 @@ import ContactsList from "./components/ContactsList";
 import ContactCard from "./components/ContactCard";
 import AddContactForm from "./components/AddContactForm";
 import Navigation from "./components/Navigation";
+import EditContactForm from "./components/EditContactForm";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/contacts" element={<ContactsList />} />
         <Route path="/contacts/:id" element={<ContactCard />} />
         <Route path="/contacts/add" element={<AddContactForm />} />
+        <Route path="/contacts/edit/:id" element={<EditContactForm />} />
         <Route path="*" element={<Navigate to="/contacts" replace />} />
       </Routes>
     </StyledApp>

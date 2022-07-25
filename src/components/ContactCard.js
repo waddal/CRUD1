@@ -24,9 +24,13 @@ const ContactCard = ({ contacts, deleteContact }) => {
     navigate("/contacts");
   };
 
+  const handleNavigateEditForm = () => {
+    navigate(`/contacts/edit/${contact.id}`);
+  };
+
   const handleModal = () => {
     setOpen(!open);
-  }
+  };
 
   const handleDeleteContact = () => {
     handleModal();
@@ -36,7 +40,13 @@ const ContactCard = ({ contacts, deleteContact }) => {
 
   return (
     <Box>
-      {open && <DeleteContactDialog handleModal={handleModal} open={open} handleDeleteContact={handleDeleteContact} />}
+      {open && (
+        <DeleteContactDialog
+          handleModal={handleModal}
+          open={open}
+          handleDeleteContact={handleDeleteContact}
+        />
+      )}
       <Card
         sx={{
           position: "relative",
@@ -78,7 +88,7 @@ const ContactCard = ({ contacts, deleteContact }) => {
           <Typography variant="body2">{contact.phone}</Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">
+          <Button size="small" onClick={handleNavigateEditForm}>
             <EditIcon />
           </Button>
           <Button size="small" onClick={handleModal}>
