@@ -6,12 +6,12 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function DeleteContactDialog({handleModal, open, handleDeleteContact}) {
+export default function DeleteContactDialog({handleDeleteModal, open, handleDeleteContact}) {
   return (
     <div>
       <Dialog
         open={open}
-        onClose={handleModal}
+        onClose={handleDeleteModal}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -25,7 +25,7 @@ export default function DeleteContactDialog({handleModal, open, handleDeleteCont
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleModal}>No</Button>
+          <Button onClick={handleDeleteModal}>No</Button>
           <Button onClick={handleDeleteContact} autoFocus>
             Yes
           </Button>

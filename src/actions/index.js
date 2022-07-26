@@ -3,6 +3,7 @@ import axios from "axios";
 export const FETCH_START = "FETCH_START";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAIL = "FETCH_FAIL";
+export const FETCH_CONTACT = "FETCH_CONTACT";
 export const ADD_CONTACT = "ADD_CONTACT";
 export const DELETE_CONTACT = "DELETE_CONTACT";
 export const UPDATE_CONTACT = "UPDATE_CONTACT";
@@ -24,11 +25,10 @@ export const getContacts = () => {
 
 export const getContactById = (id) => {
   return (dispatch) => {
-    dispatch(fetchStart());
     axios
       .get(`${process.env.REACT_APP_API}entry?id=${id}`)
       .then((res) => {
-        dispatch(fetchSuccess(res.data));
+        dispatch(fetchContact(res.data));
       })
       .catch((err) => {
         dispatch(
@@ -97,6 +97,11 @@ export const fetchSuccess = (data) => {
 export const fetchFail = (message) => {
   return { type: FETCH_FAIL, payload: message };
 };
+
+export const fetchContact = (contact) => {
+  return { type: FETCH_CONTACT, payload: contact };
+};
+
 
 export const confirmationMessage = (message) => {
   return { type: CONFIRMATION_MESSAGE, payload: message };

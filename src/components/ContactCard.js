@@ -18,7 +18,7 @@ const ContactCard = ({ contacts, deleteContact }) => {
   const [open, setOpen] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
-  const contact = contacts.find((contact) => contact.id === Number(id));
+  let contact = contacts.find((contact) => contact.id === Number(id));
 
   const handleNavigateContacts = () => {
     navigate("/contacts");
@@ -28,12 +28,12 @@ const ContactCard = ({ contacts, deleteContact }) => {
     navigate(`/contacts/edit/${contact.id}`);
   };
 
-  const handleModal = () => {
+  const handleDeleteModal = () => {
     setOpen(!open);
   };
 
   const handleDeleteContact = () => {
-    handleModal();
+    handleDeleteModal();
     deleteContact(contact.id);
     handleNavigateContacts();
   };
@@ -42,7 +42,7 @@ const ContactCard = ({ contacts, deleteContact }) => {
     <Box>
       {open && (
         <DeleteContactDialog
-          handleModal={handleModal}
+          handleDeleteModal={handleDeleteModal}
           open={open}
           handleDeleteContact={handleDeleteContact}
         />
@@ -91,7 +91,7 @@ const ContactCard = ({ contacts, deleteContact }) => {
           <Button size="small" onClick={handleNavigateEditForm}>
             <EditIcon />
           </Button>
-          <Button size="small" onClick={handleModal}>
+          <Button size="small" onClick={handleDeleteModal}>
             <PersonRemoveIcon />
           </Button>
         </CardActions>
@@ -106,4 +106,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { deleteContact })(ContactCard);
+export default connect(mapStateToProps, { deleteContact })(
+  ContactCard
+);

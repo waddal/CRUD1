@@ -1,26 +1,24 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 
-import { getContacts, getContactById } from "../actions/index";
+import { getContactById } from "../actions/index";
 
-const Search = ({ getContacts, getContactById }) => {
+const Search = ({ getContactById }) => {
   const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setSearchInput(e.target.value);
   };
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
+    await getContactById(searchInput);
     e.preventDefault();
-    if (!searchInput) {
-      getContacts();
-      console.log("getContact");
-      return;
-    }
-    // getContactById(searchInput);
-    console.log("getContactById");
+    navigate(`/contacts/${searchInput}`);
+    setSearchInput("");
   };
 
   return (
@@ -33,7 +31,7 @@ const Search = ({ getContacts, getContactById }) => {
           type={"text"}
           onChange={handleChange}
           value={searchInput}
-          placeholder={"Contact ID"}
+          placeholder={"Search by ID..."}
         />
       </label>
     </form>
@@ -41,9 +39,9 @@ const Search = ({ getContacts, getContactById }) => {
 };
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    contact: state.contact,
+  };
 };
 
-export default connect(mapStateToProps, { getContacts, getContactById })(
-  Search
-);
+export default connect(mapStateToProps, { getContactById })(Search);
